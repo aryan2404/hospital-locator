@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Login from "./components/Login";
-// import Map from "./components/Map";
+import Map from "./components/Map";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -21,15 +21,32 @@ export default function App() {
   }, []);
 
   return (
+    // <div className="flex flex-col items-center justify-center min-h-screen">
+    //   {!user ? (
+    //     <Login setUser={setUser} />
+    //   ) : (
+    //     <>
+    //       <h2>Welcome, {user.displayName}</h2>
+    //       {location && <p>Latitude: {location.lat}, Longitude: {location.lng}</p>}
+    //     </>
+    //   )}
+    // </div>
+
+
     <div className="flex flex-col items-center justify-center min-h-screen">
-      {!user ? (
-        <Login setUser={setUser} />
-      ) : (
-        <>
-          <h2>Welcome, {user.displayName}</h2>
-          {location && <p>Latitude: {location.lat}, Longitude: {location.lng}</p>}
-        </>
-      )}
-    </div>
+    {!user ? <Login setUser={setUser} /> : <Map location={location} />}
+  </div>
+
+
+//   <div className="flex flex-col items-center justify-center min-h-screen">
+//   {!user ? (
+//     <Login setUser={setUser} />
+//   ) : (
+//     <>
+//       <h2 className="text-xl">Welcome, {user.displayName}</h2>
+//       {location && <Map location={location} />}
+//     </>
+//   )}
+// </div>
   );
 }
